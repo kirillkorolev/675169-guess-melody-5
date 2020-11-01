@@ -21,12 +21,22 @@ const App = () => {
             />
           )}
         />
-        <Route path="/lose" exact>
-          <GameOverScreen />
-        </Route>
-        <Route path="/result" exact>
-          <WinScreen />
-        </Route>
+        <Route exact
+          path="/result"
+          render={({history}) => (
+            <WinScreen
+              onReplayButtonClick={() => history.push(`/game`)}
+            />
+          )}
+        />
+        <Route exact
+          path="/lose"
+          render={({history}) => (
+            <GameOverScreen
+              onReplayButtonClick={() => history.push(`/game`)}
+            />
+          )}
+        />
         <Route path="/login" exact>
           <AuthScreen />
         </Route>
